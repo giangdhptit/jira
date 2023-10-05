@@ -16,6 +16,7 @@ import java.net.URI;
 @Component
 public class MyJiraClient {
 
+
     @Value("${jira.base-url}")
     private String jiraUrl;
 
@@ -27,13 +28,12 @@ public class MyJiraClient {
 
     private JiraRestClient restClient;
 
-    public MyJiraClient(String username, String password, String jiraUrl) {
-        this.username = username;
-        this.password = password;
-        this.jiraUrl = jiraUrl;
-        this.restClient = getJiraRestClient();
-    }
-
+//    public MyJiraClient(String jiraUrl, String username, String password) {
+//        this.jiraUrl = jiraUrl;
+//        this.username = username;
+//        this.password = password;
+//        this.restClient = getJiraRestClient();
+//    }
     private JiraRestClient getJiraRestClient() {
         return new AsynchronousJiraRestClientFactory()
                 .createWithBasicHttpAuthentication(getJiraUri(), this.username, this.password);
